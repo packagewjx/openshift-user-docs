@@ -33,3 +33,9 @@
 可能与你没有设置构建的镜像标签有关。deployment部署指定标签的镜像，默认为latest。而每一次的构建，都会覆盖掉lastet，成为最新的镜像。如果需要保留不同的版本的镜像，就需要在每次构建的时候，设置镜像的标签。详细流程，请查看[构建不同版本的镜像](how-tos/build-and-tag-image.md)。
 
 # 一般问题
+
+## Service与Route有什么区别？
+
+Service是最底层的开放服务的方式，实际上它开放了容器的某一个端口到外部，不受你所使用的通讯协议的限制。Service不指定域名，如果需要给Service设置域名，则需要我们自己在域名解析中，添加这个Service的公网IP的一条解析记录。
+
+Route则是一个http、https和ws的代理，Route可以指定域名，Router绑定了容器云服务器的80和443端口，让用户能够直接在浏览器输入Route指定的网址以及协议，访问我们的服务。一个请求到达80或者443端口时，Router会根据HTTP报文的HOST请求头的域名，找到对应的Route，并将本请求转发给对应的Service。Route支持https，可以使用加密，具体查看Route中的Secure Route的相关设置。
