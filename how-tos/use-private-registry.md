@@ -22,6 +22,14 @@
 
 选择合适的地点放置证书，证书格式为`Base64-encoded ASCII, single certificate`，把文件命名为ca.crt。
 
+我们获取到的证书，以文本方式打开文件后，应该为下面这样的格式
+
+```
+-----BEGIN CERTIFICATE-----
+<证书加密内容>
+-----END CERTIFICATE-----
+```
+
 ### 信任CA证书
 
 获取了CA证书以后，我们需要让docker信任该仓库提供的CA。我们要在docker的信任证书文件夹内建立一个文件夹。信任证书文件夹路径，Windows的在`C:\ProgramData\docker\certs.d`，Linux在`/etc/docker/certs.d`。该文件夹下，创建一个目录，名为`hub.fireflywjx.cn`，即为我们的仓库地址。然后，放置`ca.crt`文件到该目录下，注意文件后缀名必须为`.crt`，否则会被认为时客户端证书而不是服务端CA证书。
