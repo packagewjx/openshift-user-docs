@@ -25,3 +25,4 @@
 - [构建一个构建镜像](how-tos/build-a-builder-image.md)
 - [灰度发布](how-tos/hui-du-fa-bu.md)
 - [使用私有镜像仓库](how-tos/use-private-registry.md)
+- [如何使用持久卷](how-tos/use-persistent-volumes.md)
